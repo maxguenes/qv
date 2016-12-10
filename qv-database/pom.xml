@@ -42,5 +42,10 @@
             <artifactId>qv-config</artifactId>
             <version>${qv.version}</version>
         </dependency>
+        <dependency>
+        	<groupId>com.tecbeat.qv</groupId>
+        	<artifactId>qv-commons</artifactId>
+        	<version>${qv.version}</version>
+        </dependency>
     </dependencies>
 </project>

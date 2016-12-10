@@ -1,6 +1,8 @@
 package com.techbeat.qv.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -13,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonInclude(Include.NON_EMPTY)
 public class ProductOrder{
 
-    private int id;
+    private Integer id;
 
     private User user;
 
@@ -22,12 +24,22 @@ public class ProductOrder{
     private Date deliveryDate;
 
     private int status;
+    
+    private List<ProductOrderItems> orderItems = new ArrayList<>();
 
-    public int getId() {
+    public ProductOrder() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    public ProductOrder(Status status){
+    	this.status = status.getStatusValue();
+    }
+    
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -62,5 +74,13 @@ public class ProductOrder{
     public void setStatus(int status) {
         this.status = status;
     }
+    
+    public List<ProductOrderItems> getOrderItems() {
+		return orderItems;
+	}
+    
+    public void setOrderItems(List<ProductOrderItems> orderItems) {
+		this.orderItems = orderItems;
+	}
 
 }

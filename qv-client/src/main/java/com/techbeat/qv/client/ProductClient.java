@@ -1,7 +1,6 @@
 package com.techbeat.qv.client;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,12 +29,12 @@ public class ProductClient extends QvClient{
 		HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(parts,
 				headers);
 			
-    	ResponseEntity<Product[]> result = template.exchange(getQvServiceEndpointURL("list"), HttpMethod.GET, requestEntity,
+    	ResponseEntity<Product[]> result = template.exchange(getQvProductServiceEndpointURL("list"), HttpMethod.GET, requestEntity,
     			Product[].class);
     	return Arrays.asList(result.getBody());
     }
 
-	public Product add(Product Product){
+	public Product save(Product Product){
 		MultiValueMap<String, String> headers = 
 				new LinkedMultiValueMap<String, String>(); 
 		headers.add("Content-Type", MediaType.APPLICATION_JSON_VALUE);
@@ -43,13 +42,13 @@ public class ProductClient extends QvClient{
 
 		HttpEntity<Product> entity = new HttpEntity<Product>(Product, headers); 
 		
-    	ResponseEntity<Product> result = template.exchange(getQvServiceEndpointURL("save"), HttpMethod.POST, entity,
+    	ResponseEntity<Product> result = template.exchange(getQvProductServiceEndpointURL("save"), HttpMethod.POST, entity,
     			Product.class);
     	return result.getBody();
 	}
 	
 	public Product get(int id) {
-		return template.exchange(getQvServiceEndpointURL("get/"+id), HttpMethod.GET, null,
+		return template.exchange(getQvProductServiceEndpointURL("get/"+id), HttpMethod.GET, null,
     			Product.class).getBody();
 	}
 	
@@ -58,8 +57,8 @@ public class ProductClient extends QvClient{
     			Boolean.class).getBody();
 	}
 
-	private URI getQvProductServiceEndpointURL(String endpoint) {
-		return getQvProductServiceEndpointURL("product/"+endpoint);
+	private String getQvProductServiceEndpointURL(String endpoint) {
+		return getQvServiceEndpointURL("product/"+endpoint);
 	}
 	
 	

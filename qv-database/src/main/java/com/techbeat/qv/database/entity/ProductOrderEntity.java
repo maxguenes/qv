@@ -1,7 +1,19 @@
 package com.techbeat.qv.database.entity;
 
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 
 /**
  * Created by Max Guenes on 04/12/2016.
@@ -12,7 +24,7 @@ public class ProductOrderEntity {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
@@ -21,17 +33,21 @@ public class ProductOrderEntity {
     @Column(name = "register_date", nullable = false)
     private Date registerDate;
 
-    @Column(name = "delivery_date ", nullable = false)
+    @Column(name = "delivery_date")
     private Date deliveryDate;
 
     @Column(name = "status", nullable = false)
     private int status;
+    
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    private List<ProductOrderItemsEntity> orderItems = new ArrayList<>();
 
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -66,6 +82,14 @@ public class ProductOrderEntity {
     public void setStatus(int status) {
         this.status = status;
     }
+    
+    public List<ProductOrderItemsEntity> getOrderItems() {
+		return orderItems;
+	}
+    
+    public void setOrderItems(List<ProductOrderItemsEntity> orderItems) {
+		this.orderItems = orderItems;
+	}
 
     @PrePersist
     protected void onCreate() {

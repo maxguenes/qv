@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonInclude(Include.NON_EMPTY)
 public class User {
 
-    private int id;
+    private Integer id;
 
     private String name;
 
@@ -21,11 +21,11 @@ public class User {
 
     private Date registerDate;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

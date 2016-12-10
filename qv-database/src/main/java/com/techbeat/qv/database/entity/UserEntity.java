@@ -12,7 +12,7 @@ public class UserEntity {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @Column(name="name", nullable = false)
     private String name;
@@ -22,14 +22,12 @@ public class UserEntity {
 
     @Column(name = "register_date", nullable = false)
     private Date registerDate;
-
-
-
-    public int getId() {
+    
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

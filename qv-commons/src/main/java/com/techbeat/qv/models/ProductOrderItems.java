@@ -12,19 +12,19 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonInclude(Include.NON_EMPTY)
 public class ProductOrderItems {
 
-    private int id;
+    private Integer id;
 
     private ProductOrder order;
 
     private Product product;
 
-    private int quantitiy;
+    private Integer quantitiy;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,11 +44,11 @@ public class ProductOrderItems {
         this.product = product;
     }
 
-    public int getQuantitiy() {
+    public Integer getQuantitiy() {
         return quantitiy;
     }
 
-    public void setQuantitiy(int quantitiy) {
+    public void setQuantitiy(Integer quantitiy) {
         this.quantitiy = quantitiy;
     }
 }

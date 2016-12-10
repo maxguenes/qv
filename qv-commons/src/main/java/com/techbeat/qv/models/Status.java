@@ -2,20 +2,21 @@ package com.techbeat.qv.models;
 
 public enum Status {
 
-	AGUARDANDO_PAGAMENTO(1);
+	INSUFFICIENT_STOCK(-1),
+	WAITING_PAYMENT(1),
+	WAITING_CAR(2),
+	IN_DELIVERY(3),
+	DELIVERED(0);
 	
-	private Integer valor;
-
+	private Integer statusValue;
 	
-	Status (Integer valor){
-		this.valor = valor;
+	Status (Integer statusValue){
+		this.statusValue = statusValue;
 	}
 
-	public Integer getValor() {
-		return valor;
+	public Integer getStatusValue() {
+		return statusValue;
 	}
-	
-	
 	
 	
 

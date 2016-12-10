@@ -20,11 +20,12 @@ public class ProductConverter {
 		result.setId(p.getId());
 		result.setName(p.getName());
 		result.setValue(p.getValue());
+		result.setUnit(p.getUnit());
 		
 		return result;
 	}
 	
-	public static List<Product> convert(Iterable<ProductEntity> p)
+	public static List<Product> convertToModelList(Iterable<ProductEntity> p)
 	{
 		
 		if(p == null){
@@ -33,6 +34,21 @@ public class ProductConverter {
 		
 		List<Product> result = new ArrayList<>();
 		for(ProductEntity entity : p){
+			result.add(convert(entity));
+		}
+		
+		return result;
+	}
+	
+	public static List<ProductEntity> convertToEntityList(Iterable<Product> p)
+	{
+		
+		if(p == null){
+			return null;
+		}
+		
+		List<ProductEntity> result = new ArrayList<>();
+		for(Product entity : p){
 			result.add(convert(entity));
 		}
 		
@@ -51,6 +67,7 @@ public class ProductConverter {
 		result.setId(p.getId());
 		result.setName(p.getName());
 		result.setValue(p.getValue());
+		result.setUnit(p.getUnit());
 		
 		return result;
 	}

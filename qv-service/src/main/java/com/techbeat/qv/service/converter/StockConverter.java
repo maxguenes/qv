@@ -3,9 +3,7 @@ package com.techbeat.qv.service.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.techbeat.qv.database.entity.ProductEntity;
 import com.techbeat.qv.database.entity.StockEntity;
-import com.techbeat.qv.models.Product;
 import com.techbeat.qv.models.Stock;
 
 public class StockConverter {
@@ -17,20 +15,15 @@ public class StockConverter {
 		}
 		
 		Stock result = new Stock();
-		Product product = new Product();
 		
-		product.setId(p.getProduct().getId());
-		product.setName(p.getProduct().getName());
-		product.setValue(p.getProduct().getValue());
-	
 		result.setId(p.getId());
-		result.setProduct(product);
+		result.setProduct(ProductConverter.convert(p.getProduct()));
 		result.setQuantitiy(p.getQuantitiy());
 	
 		return result;
 	}
 	
-	public static List<Stock> convert(Iterable<StockEntity> p)
+	public static List<Stock> convertToModelList(Iterable<StockEntity> p)
 	{
 		
 		if(p == null){
@@ -54,15 +47,11 @@ public class StockConverter {
 		}
 		
 		StockEntity result = new StockEntity();
-		ProductEntity productEntity = new ProductEntity();
 		
-		productEntity.setId(p.getProduct().getId());
-		productEntity.setName(p.getProduct().getName());
-		productEntity.setValue(p.getProduct().getValue());
 		
 		result.setId(p.getId());
 		result.setQuantitiy(p.getQuantitiy());
-		result.setProduct(productEntity);
+		result.setProduct(ProductConverter.convert(p.getProduct()));
 		
 		return result;
 	}

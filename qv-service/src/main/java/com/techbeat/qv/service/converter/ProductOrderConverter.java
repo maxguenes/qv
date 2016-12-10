@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.techbeat.qv.database.entity.ProductOrderEntity;
-import com.techbeat.qv.database.entity.UserEntity;
 import com.techbeat.qv.models.ProductOrder;
-import com.techbeat.qv.models.User;
 
 public class ProductOrderConverter {
 
@@ -18,20 +16,16 @@ public class ProductOrderConverter {
 		}
 		
 		ProductOrder result = new ProductOrder();
-		User user = new User();
-		user.setEmail(p.getUser().getEmail());
-		user.setName(p.getUser().getName());
-		user.setRegisterDate(p.getUser().getRegisterDate());
-		user.setId(p.getUser().getId());
-		result.setUser(user);
+		result.setUser(UserConverter.convert(p.getUser()));
 		result.setStatus(p.getStatus());
 		result.setRegisterDate(p.getRegisterDate());
 		result.setId(p.getId());
+		result.setOrderItems(ProductOrderItemsConverter.convertToModelList(p.getOrderItems()));
 		
 		return result;
 	}
 	
-	public static List<ProductOrder> convert(Iterable<ProductOrderEntity> p)
+	public static List<ProductOrder> convertToModelList(Iterable<ProductOrderEntity> p)
 	{
 		
 		if(p == null){
@@ -55,18 +49,12 @@ public class ProductOrderConverter {
 		
 		ProductOrderEntity result = new ProductOrderEntity();
 		
-		UserEntity userEntity = new UserEntity();
-
-		userEntity.setEmail(p.getUser().getEmail());
-		userEntity.setName(p.getUser().getName());
-		userEntity.setId(p.getUser().getId());
-		userEntity.setRegisterDate(p.getUser().getRegisterDate());
-		
-		result.setUser(userEntity);
+		result.setUser(UserConverter.convert(p.getUser()));
 		result.setDeliveryDate(p.getDeliveryDate());
 		result.setRegisterDate(p.getRegisterDate());
 		result.setStatus(p.getStatus());
 		result.setId(p.getId());
+		result.setOrderItems(ProductOrderItemsConverter.convertToEntityList(p.getOrderItems()));
 		
 		return result;
 	}

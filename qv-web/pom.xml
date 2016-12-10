@@ -35,23 +35,34 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servletapi.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-        </dependency>
-        <dependency>
-        	<groupId>com.tecbeat.qv</groupId>
-        	<artifactId>qv-service</artifactId>
-        	<version>${qv.version}</version>
-        </dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servletapi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tecbeat.qv</groupId>
+			<artifactId>qv-service</artifactId>
+			<version>${qv.version}</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.tecbeat.qv</groupId> -->
+<!-- 			<artifactId>qv-security</artifactId> -->
+<!-- 			<version>${qv.version}</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 </project>

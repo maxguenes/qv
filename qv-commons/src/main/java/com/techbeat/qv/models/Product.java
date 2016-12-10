@@ -11,17 +11,21 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonInclude(Include.NON_EMPTY)
 public class Product {
 	
-	private int id;
+	private Integer id;
 
 	private String name;
 
+	private Unit unit;
+	
 	private double value;
 
-	public int getId() {
+	private Stock stock;
+	
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -32,6 +36,14 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public Unit getUnit() {
+		return unit;
+	}
+	
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
 
 	public double getValue() {
 		return value;
@@ -39,5 +51,13 @@ public class Product {
 
 	public void setValue(double value) {
 		this.value = value;
+	}
+	
+	public Stock getStock() {
+		return stock;
+	}
+	
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 }

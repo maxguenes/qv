@@ -37,12 +37,12 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value= "/save", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
-    public Product addPerson(@RequestBody Product product){
+    public Product save(@RequestBody Product product){
         return productService.save(product);
     }
     
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> removePerson(@PathVariable("id") int id){
+    public ResponseEntity<Boolean> remove(@PathVariable("id") int id){
         boolean result = productService.delete(id);
         return new ResponseEntity<Boolean>(result, HttpStatus.OK);
     }
