@@ -18,6 +18,7 @@ public class ProductOrderItemsConverter {
 		
 		ProductOrderItems result = new ProductOrderItems();
 		result.setId(p.getId());
+		result.setProduct(ProductConverter.convert(p.getProduct()));
 		result.setQuantitiy(p.getQuantitiy());
 		
 		return result;

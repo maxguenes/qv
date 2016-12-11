@@ -25,7 +25,7 @@ public class ProductOrder{
 
     private int status;
     
-    private List<ProductOrderItems> orderItems = new ArrayList<>();
+    private List<ProductOrderItems> orderItems = new ArrayList<ProductOrderItems>();
 
     public ProductOrder() {
 		// TODO Auto-generated constructor stub

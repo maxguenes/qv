@@ -39,7 +39,7 @@ public class ProductOrderEntity {
     @Column(name = "status", nullable = false)
     private int status;
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "productOrder")
     private List<ProductOrderItemsEntity> orderItems = new ArrayList<>();
 
 

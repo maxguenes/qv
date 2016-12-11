@@ -10,6 +10,8 @@ public interface ProductOrderService {
 	
 	ProductOrder save(ProductOrder productOrder) throws InsufficientStockException;
 	
+	ProductOrder find(int id);
+	
 	List<ProductOrder> list();
 	
 	List<ProductOrder> listUserOrders(User user);

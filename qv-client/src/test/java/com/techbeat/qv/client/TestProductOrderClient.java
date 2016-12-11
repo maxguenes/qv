@@ -15,6 +15,17 @@ public class TestProductOrderClient {
 	
 	public static void main(String[] args) throws Exception{
 		ProductOrderClient client = new ProductOrderClient(URL);
+		
+		User user = new User();
+		user.setId(1);
+		user.setEmail("admin@admin.com");
+		List<ProductOrder> listUserOrder = client.listUserOrder(user);
+		System.out.println(listUserOrder);
+	}
+	
+	
+	public static void main2(String[] args) throws Exception{
+		ProductOrderClient client = new ProductOrderClient(URL);
 		ProductClient productsClient = new ProductClient(URL);
 		ProductOrder order = new ProductOrder();
 		

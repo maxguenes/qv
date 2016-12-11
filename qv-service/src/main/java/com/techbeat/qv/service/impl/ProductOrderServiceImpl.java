@@ -109,5 +109,11 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		List<ProductOrderEntity> found = productOrderRepository.findByUser(UserConverter.convert(user));
 		return ProductOrderConverter.convertToModelList(found);
 	}
+
+	@Override
+	public ProductOrder find(int id) {
+		ProductOrderEntity found = productOrderRepository.findOne(id);
+		return ProductOrderConverter.convert(found);
+	}
 	
 }

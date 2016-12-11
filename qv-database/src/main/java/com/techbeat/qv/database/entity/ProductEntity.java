@@ -31,7 +31,7 @@ public class ProductEntity {
     @Enumerated(EnumType.STRING)
     private Unit unit;
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "product", orphanRemoval = true, cascade = CascadeType.ALL)
     private StockEntity stock;
 
     @Column(name="value", nullable = false)
