@@ -17,7 +17,7 @@ public class TestProductOrderClient {
 		ProductOrderClient client = new ProductOrderClient(URL);
 		
 		User user = new User();
-		user.setId(1);
+//		user.setId(1);
 		user.setEmail("admin@admin.com");
 		List<ProductOrder> listUserOrder = client.listUserOrder(user);
 		System.out.println(listUserOrder);

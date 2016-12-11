@@ -14,4 +14,6 @@ public interface ProductOrderRepository extends CrudRepository<ProductOrderEntit
 
 	List<ProductOrderEntity> findByUser(UserEntity user);
 	
+	List<ProductOrderEntity> findByUser_email(String email);
+	
 }

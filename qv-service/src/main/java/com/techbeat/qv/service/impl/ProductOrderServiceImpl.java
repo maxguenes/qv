@@ -106,7 +106,13 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 
 	@Override
 	public List<ProductOrder> listUserOrders(User user) {
-		List<ProductOrderEntity> found = productOrderRepository.findByUser(UserConverter.convert(user));
+		List<ProductOrderEntity> found = null;
+		if(user.getId()!=null){
+			found = productOrderRepository.findByUser(UserConverter.convert(user));
+		}else{
+			found = productOrderRepository.findByUser_email(user.getEmail());
+		}
+		
 		return ProductOrderConverter.convertToModelList(found);
 	}
 
