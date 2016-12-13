@@ -9,7 +9,9 @@ import com.techbeat.qv.models.Stock;
 public interface StockService {
 
 	Stock save(Stock stock);
-	boolean delete(int id);
+	
+	List<Stock> list();
+	
 	boolean isExistStock (List<ProductOrderItems> productOrderItems);
 	
 }

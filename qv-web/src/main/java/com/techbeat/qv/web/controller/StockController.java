@@ -1,5 +1,7 @@
 package com.techbeat.qv.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -23,4 +25,10 @@ public class StockController {
     public Stock save(@RequestBody Stock stock){
         return stockService.save(stock);
     }
+    
+    @ResponseBody
+	@RequestMapping(value="/list", method = RequestMethod.GET)
+    public  List<Stock> list() {
+		return stockService.list();
+	}
 }

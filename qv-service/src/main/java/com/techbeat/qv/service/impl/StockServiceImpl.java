@@ -41,12 +41,6 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public boolean delete(int id) {
-		stockRepository.delete(id);
-		return true;
-	}
-
-	@Override
 	public boolean isExistStock(List<ProductOrderItems> productOrderItems) {
 		
 		if(productOrderItems == null || productOrderItems.isEmpty()){
@@ -65,6 +59,11 @@ public class StockServiceImpl implements StockService {
 		}
 		
 		return true;
+	}
+
+	@Override
+	public List<Stock> list() {
+		return StockConverter.convertToModelList(stockRepository.findAll());
 	}
 
 }
