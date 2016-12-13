@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.techbeat.qv.database.entity.StockEntity;
 import com.techbeat.qv.database.repository.StockRepository;
@@ -21,6 +22,7 @@ public class StockServiceImpl implements StockService {
 
 
 	@Override
+	@Transactional
 	public Stock save(Stock stock) {
 		StockEntity entity = null;
 		
@@ -64,6 +66,11 @@ public class StockServiceImpl implements StockService {
 	@Override
 	public List<Stock> list() {
 		return StockConverter.convertToModelList(stockRepository.findAll());
+	}
+	
+	@Override
+	public Stock get(int id) {
+		return StockConverter.convert(stockRepository.findOne(id));
 	}
 
 }

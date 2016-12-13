@@ -12,6 +12,8 @@ public interface StockService {
 	
 	List<Stock> list();
 	
+	Stock get(int id);
+	
 	boolean isExistStock (List<ProductOrderItems> productOrderItems);
 	
 }
