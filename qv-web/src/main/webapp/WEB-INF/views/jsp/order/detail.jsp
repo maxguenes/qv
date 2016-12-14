@@ -77,7 +77,7 @@
                 <td>${orderItem.quantitiy}</td>
                 <td>${orderItem.product.name}</td>
                 <td>${orderItem.product.unit.unitName}</td>
-                <td>${orderItem.product.value}</td>
+                <td><fmt:formatNumber value="${orderItem.product.value}" type="currency"/></td>
                 <td><fmt:formatNumber value="${orderItem.quantitiy * orderItem.product.value}" type="currency"/></td>
             </tr>
         </c:forEach>
