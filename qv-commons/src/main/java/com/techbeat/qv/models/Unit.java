@@ -4,7 +4,7 @@ public enum Unit {
 
 	
 	KG("Kg"),
-	G("g"),
+	G("Grama"),
 	UNIT("Unid.");
 	
 	private String unitName;
@@ -16,7 +16,5 @@ public enum Unit {
 	public String getUnitName() {
 		return unitName;
 	}
-	
-	
 
 }

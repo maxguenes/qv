@@ -1,7 +1,9 @@
 <%@page import="com.techbeat.qv.models.Status"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ 
  <jsp:useBean id="statusConverter" class="com.techbeat.qv.web.util.StatusConverter"/>
 
 <!DOCTYPE html>
@@ -32,30 +34,51 @@
 
 <div class="container">
 
-    <h3>Lista de Pedidos</h3>
+    <h3>Detalhes do pedido</h3>
+    
+    <table class="tg">
+	    <tr>
+	        <td><span>ID:</span></td>
+	        <td>
+	            <span>${order.id}</span>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td><span>Nome do comprador:</span></td>
+	        <td><span>${order.user.name}</span>
+	    </tr>
+	    <tr>
+	        <td><span>Email do comprador:</span></td>
+	        <td><span>${order.user.email}</span>
+	    </tr>
+	    <tr>
+	        <td><span>Status:</span></td>
+	        <td><span>${statusConverter.getName(order.status)}</span>
+	    </tr>
+	    
+	    <tr>
+	        <td><span>Valor total:</span></td>
+	        <td><span><fmt:formatNumber value="${totalSum}" type="currency"/></span>
+	    </tr>
+    </table>
+    
     <table class="tg">
         <tr>
             <th width="80">ID</th>
             <th width="120">Quantidade</th>
-            <th width="200">Email comprador</th>
-            <th width="60">Status</th>
-            <th width="60">Ações</th>
+            <th width="200">Nome do produto</th>
+            <th width="60">Unidade do produto</th>
+            <th width="60">Valor unitario</th>
+            <th width="60">Sub total</th>
         </tr>
-        <c:forEach items="${orderList}" var="order">
+        <c:forEach items="${order.orderItems}" var="orderItem">
             <tr>
-                <td>${order.id}</td>
-                <td>${fn:length(order.orderItems)}</td>
-                <td>${order.user.email}</td>
-                <td>${statusConverter.getName(order.status)}</td>
-                <td>
-                	<div><a href="<c:url value='/view/order/detail/${order.id}' />">Detalhe</a></div>
-	                <c:if test="${order.status == 2}">
-	                	<div><a href="<c:url value='/view/order/delivering/${order.id}' />">Enviar para entrega</a></div>
-	                </c:if>
-	                <c:if test="${order.status == 3}">
-	                	<div><a href="<c:url value='/view/order/delivered/${order.id}' />">Marcar como entregue</a></div>
-	                </c:if>
-                </td>
+                <td>${orderItem.id}</td>
+                <td>${orderItem.quantitiy}</td>
+                <td>${orderItem.product.name}</td>
+                <td>${orderItem.product.unit.unitName}</td>
+                <td>${orderItem.product.value}</td>
+                <td><fmt:formatNumber value="${orderItem.quantitiy * orderItem.product.value}" type="currency"/></td>
             </tr>
         </c:forEach>
     </table>

@@ -26,7 +26,7 @@ public enum Status {
 	
 	public static Status getStatusFromValue(Integer statusValue){
 		for(Status status : values()){
-			if(status.getStatusValue() == statusValue){
+			if(status.getStatusValue().equals(statusValue)){
 				return status;
 			}
 		}

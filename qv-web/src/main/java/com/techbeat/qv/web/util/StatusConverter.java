@@ -4,8 +4,13 @@ import com.techbeat.qv.models.Status;
 
 public class StatusConverter {
 
-	public String getName(Integer statusValue){
-		return Status.getStatusFromValue(statusValue).getStatusMsg();
+	public static String getName(Integer statusValue){
+		Status status = Status.getStatusFromValue(statusValue);
+		if(status == null){
+			return "";
+		}
+		
+		return status.getStatusMsg();
 	}
 	
 }

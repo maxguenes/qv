@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.techbeat.qv.models.ProductOrder;
+import com.techbeat.qv.models.ProductOrderItems;
 import com.techbeat.qv.models.Status;
 import com.techbeat.qv.service.ProductOrderService;
 
@@ -24,6 +25,20 @@ public class OrderViewController {
     public String index(Model model) {
         model.addAttribute("orderList", orderService.list());
         return "order/index";
+    }
+	
+	@RequestMapping(value= "/detail/{id}", method = RequestMethod.GET)
+    public String detailOrder(@PathVariable("id") int id, Model model){
+		ProductOrder order = orderService.find(id);
+		model.addAttribute("order", order);
+		
+		double sumTotal = 0;
+		for(ProductOrderItems item : order.getOrderItems()){
+			sumTotal += item.getQuantitiy()*item.getProduct().getValue();
+		}
+		
+		model.addAttribute("totalSum", sumTotal);
+        return "order/detail";
     }
 	
 	@RequestMapping(value= "/delivering/{id}", method = RequestMethod.GET)

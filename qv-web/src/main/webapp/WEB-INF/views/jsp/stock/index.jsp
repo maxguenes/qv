@@ -28,7 +28,13 @@
 
 <div class="container">
 
-    <h3>Lista de materias</h3>
+    <h3>Lista de Produtos em estoque</h3>
+    
+    <div class="row">
+         <div class="col-md-4">
+             <input type="button" value="Novo produto em estoque" onclick="location.href = '<c:url value="/view/stock/new"/>';"/>
+         </div>
+     </div>
     <table class="tg">
         <tr>
             <th width="80">ID</th>

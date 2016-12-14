@@ -73,12 +73,12 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		
 		ProductOrderEntity entity = null;
 		
-		productOrder.setStatus(Status.WAITING_PAYMENT.getStatusValue());
-		
 		if(productOrder.getId()==null) {
+			productOrder.setStatus(Status.WAITING_PAYMENT.getStatusValue());
 			entity = ProductOrderConverter.convert(productOrder);
 		}else{
 			entity = productOrderRepository.findOne(productOrder.getId());
+			entity.setStatus(productOrder.getStatus());
 		}
 		
 		

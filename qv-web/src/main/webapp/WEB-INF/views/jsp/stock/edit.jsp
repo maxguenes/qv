@@ -44,6 +44,10 @@
                 <td><span>${stock.product.name}</span>
             </tr>
             <tr>
+                <td><span>Unidade do produto:</span></td>
+                <td><span>${stock.product.unit.unitName}</span>
+            </tr>
+            <tr>
                 <td><span>Estoque atual:</span></td>
                 <td><span>${stock.quantitiy}</span>
             </tr> 
