@@ -5,24 +5,26 @@
 <head>
 <title>Quitanda Verde</title>
 
-<spring:url value="/resources/core/css/hello.css" var="coreCss" />
 <spring:url value="/resources/core/css/bootstrap.min.css"
 	var="bootstrapCss" />
 <link href="${bootstrapCss}" rel="stylesheet" />
-<link href="${coreCss}" rel="stylesheet" />
+
+<spring:url value="/resources/core/img/icon_qv.png" var="logoImg" />
+
 </head>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="<c:url value="/"/>">Quitanda Verde</a>
+			<a class="navbar-brand" href="<c:url value="/"/>">
+				<img src="${logoImg}" alt="Quitanda verde" />
+			</a>
 		</div>
 	</div>
 </nav>
 
 <div class="jumbotron">
 	<div class="container">
-		<h1>${title}</h1>
 	</div>
 </div>
 
@@ -46,7 +48,7 @@
 
 	<hr>
 	<footer>
-		<p>Max Guenes 2016</p>
+		<p>Techbeat 2016</p>
 	</footer>
 </div>
 
